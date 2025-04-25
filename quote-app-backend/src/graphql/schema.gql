@@ -1,0 +1,44 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type QuoteModel {
+  id: Int!
+  text: String!
+  author: String!
+  createdAt: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Query {
+  getAllQuotes: [QuoteModel!]!
+  getQuoteById(id: Int!): QuoteModel!
+  searchQuotes(input: SearchQuoteInput!): [QuoteModel!]!
+}
+
+input SearchQuoteInput {
+  text: String
+  author: String
+  startDate: DateTime
+  endDate: DateTime
+}
+
+type Mutation {
+  createQuote(input: CreateQuoteInput!): QuoteModel!
+  updateQuote(input: UpdateQuoteInput!, id: Int!): QuoteModel!
+  deleteQuote(id: Int!): QuoteModel!
+}
+
+input CreateQuoteInput {
+  text: String!
+  author: String!
+}
+
+input UpdateQuoteInput {
+  text: String
+  author: String
+}
